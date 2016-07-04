@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Movieflix</title>
+  <meta name="description" content="">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Netflix_logo.svg/1280px-Netflix_logo.svg.png"/>
+      <!--<button class="signin" onclick="trial1.html"><a href="trial1.html"></a>
+        Sign In
+      </button>-->
+    </div>
+  </div>
+  <div id="main" role="main">
+    <div id="browser">
+      <div class="categoryTitle">
+        <form action="../movieflixMainPage/trial1.html">
+
+          <h1>Sign Up</h1>
+
+          <fieldset>
+            <legend><span class="number">1</span>Your basic info</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="user_name">
+
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="user_email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="user_password">
+
+            <label>Choose the plan that's right for you:</label>
+            <input type="radio" id="Basic" value="Basic" name="plan_type"><label for="Basic" class="light">Basic</label><br>
+            <input type="radio" id="Premium" value="Premium" name="plan_type"><label for="Premium" class="light">Premium</label>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="number">2</span>Your profile</legend>
+            <label id="payment_details">Enter your payment details</label>
+            <label for="payment_details">Don't worry, we will email you three days before trial ends as a reminder.</label>
+          </fieldset>
+          <fieldset>
+            <label for="card">Payment Method:</label>
+            <select id="card" name="user_card">
+              <optgroup label="credit_Card">
+                <option value="Visa">Visa</option>
+                <option value="master_Card">Master Card</option>
+                <option value="Amex">Amex</option>
+                <option value="Discover">Discover</option>
+              </optgroup>
+              <optgroup label="PayPal">
+                <option value="Paypal">Paypal</option>
+              </optgroup>
+              <optgroup label="Movieflix Gift Card">
+                <option value="Movieflix">Movieflix</option>
+              </optgroup>
+            </select>
+
+            <label for="name">First Name:  <br>Must match card</label>
+            <input type="text" id="name" name="user_name">
+
+            <label for="mail">Last Name: <br> Must match card:</label>
+            <input type="email" id="mail" name="user_email">
+
+            <label for="password">Card Number:</label>
+            <input type="password" id="password" name="user_password">
+
+            <label for="name">Zipcode:</label>
+            <input type="text" id="name" name="user_name">
+
+            <label for="name">Expiration date:  (mm/dd/yyyy)</label>
+            <input type="text" id="name" name="user_name">
+
+            <label for="password">Security Code:</label>
+            <input type="password" id="password" name="user_password">
+          </fieldset>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

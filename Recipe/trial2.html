@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html ng-app="plunker" lang="en">
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movieflix</title>
+
+  <link rel="stylesheet" href="trial2.css">
+  <script data-require="angular.js@*" data-semver="1.3.0" src="//code.angularjs.org/1.3.0/angular.js"></script>
+  <script src="script.js"></script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <meta name="description" content="">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body ng-controller="MovieController as movieCtrl"> <!-- ng-controller="MovieController as movieCtrl"-->
+
+
+  <div id="container">
+        <div id="header">
+            <div class="logo">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Netflix_logo.svg/1280px-Netflix_logo.svg.png"/>
+            </div>
+            <div class="logo">
+              <div style="margin-top: 7px">
+                <input type="button" value="Logout" onclick="window.location.href='../Project/index.html'" style="margin-top: 7px"/>
+              </div>
+            </div>
+          <div class="logo">
+            <div style="margin-top: 7px">
+              <input type="button" value="Sorting" onclick="window.location.href='trial1.html'" style="margin-top: 7px"/>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="main" role="main">
+
+
+            <div id="browser">
+              <div class="categoryTitle">List of Movies on Movieflix
+                <div ui-view="" name="content">
+                  <p>
+                    {{movieCtrl.clickedMovie.name}} , {{movieCtrl.clickedMovie.runningTime}}
+                  </p>
+                </div>
+              </div>
+                <div class="categoryTitle">
+                  <div ng-if="movieCtrl.showAddMovieForm">
+                    <div>
+                      <label>Movie Name:</label>
+                      <input ng-model="movieCtrl.movieToBeAdded.name"/>
+                      {{movieCtrl.movieToBeAdded.name}}
+                    </div>
+                    <div>
+                      <label>Running Time:</label>
+                      <input ng-model="movieCtrl.movieToBeAdded.runningTime"/>
+                      {{movieCtrl.movieToBeAdded.runningTime}}
+                    </div>
+                    <div>
+                      <!--<input type="button" value="Submit" ng-click="movieCtrl.submitAddMovieForm()">-->
+                      <button ng-click="movieCtrl.submitAddMovieForm()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              <div class="categoryTitle">
+                <p>All Movie Tiles</p>
+              </div>
+
+                <div class="category">
+                  <ul class="categoryRow clearfix">
+                  <div ng-repeat = "movie in movieCtrl.movies">
+                      <li class="movie">
+                        <p></p>
+                          {{movie.name}} , {{movie.runningTime}}
+                        <!--<input type="button" value="Delete" ng-click="movieCtrl.deleteMovie($index)"/>-->
+                        <br>
+                        <button ng-click="movieCtrl.deleteMovie($index)" style="position: absolute">Delete</button>
+                        <br>
+
+
+                        <fieldset class="rating">
+                          <legend>Rate The Movie</legend>
+                          <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                          <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                          <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                          <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                          <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                        </fieldset>
+                        <br><br>
+                        <a href="http://www.imdb.com">Link to IMDB site</a>
+                        <br><br>
+
+                        <input type="button" value="View and Modify" onclick="window.location.href='trial3.html'"/>
+
+                        <br>
+                        <input type="button" value="View and Add Comments" onclick="window.location.href='trial4.html'"/>
+                        <br>
+
+                      </li>
+
+
+                    <!--<button ng-click="recipeCtrl.showClickedRecipe($index)">{{$index+1}}</button>-->
+                  </div>
+                  </ul>
+                </div>
+
+
+                <div class="categoryTitle">Latest Additions
+
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                        <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                           <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                           <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                           <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Popular in Movieflix
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                        <li class="movie">
+                          <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Trending Now
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                        <li class="movie">
+                          <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                        </li>
+                        <li class="movie">
+                          <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">International Movies
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Top Picks for you
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Recently Added
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">TV Shows
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Romantic Movies
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                          </li>
+                          <li class="movie">
+                            <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                          </li>
+                    </ul>
+                </div>
+
+                <div class="categoryTitle">Comedies
+                </div>
+
+                <div class="category">
+                    <ul class="categoryRow clearfix">
+                      <li class="movie">
+                        <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://images.mstarsnews.musictimes.com/data/thumbs/full/66347/600/0/0/0/marvels-daredevil.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://image.tmdb.org/t/p//original/nkkFebe8ZgE843rnTrlaRWJy0g9.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://www.newdvdreleasedates.com/images/posters/large/minions-2015-02.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://emsontheroad.com/wp-content/uploads/2016/02/no205-my-roman-holiday-minimal-movie-poster-chungkong-art.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://image.tmdb.org/t/p//original/3AiMCKSLxpYsjP3eQFg3FG3a9OW.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/09/house-of-cards-final-poster-640x948.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="https://13movies.files.wordpress.com/2013/08/charade-poster.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://is1.mzstatic.com/image/thumb/Video/v4/a6/f2/fa/a6f2fa13-294e-c3ce-4efc-249f1a9aa3c0/mzl.htkinlpf.lsr/600x600bb-85.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://3.bp.blogspot.com/-9exi36Mj8_w/VXkHu3GJiWI/AAAAAAAAEFg/ns04JOXX3hc/s1600/OITNB_3.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="https://static.justwatch.com/poster/658846/s592"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://image.tmdb.org/t/p//original/xFgYye7KBkVZoneFpvW7wvispaM.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://cdn.collider.com/wp-content/uploads/2016/02/fuller-house-poster.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://s.sidereel.com/tv_shows/36089/giant_2x/Friends-ShowcardVertical1.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://cdn.hitfix.com/photos/4025844/81wl0PL9A-L._SL1500__event_main.jpg"/></span>
+                      </li>
+                      <li class="movie">
+                        <span><img src="http://3.bp.blogspot.com/-jZpzpfIjPfQ/UM9zOWkoHOI/AAAAAAACLaE/P9NDFqKftJk/s1600/Big_bang_theory_poster11.jpg"/></span>
+                      </li>
+                    </ul>
+                </div>
+
+          </div>
+        </div>
+  </div>
+  <br><br>
+
+
+
+
+<!--<p>
+  {{movieCtrl.clickedMovie.name}} , {{movieCtrl.clickedMovie.runningTime}}
+</p>-->
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="app2.js"></script>
+<script src="routes2.js"></script>
+<script src="movie.directive.js"></script>
+<script src="nservices/movie.service.js"></script>
+<script src="nfactories/movie.factory.js"></script>
+<script src="ncontrollers/movie.controller.js"></script>
+<!--<base href ="/">-->
+</body>
+</html>
+

@@ -1,0 +1,37 @@
+<div>
+  <!--<input type="button" value="Show Movies" ng-click="movieCtrl.showMovies()"/>
+  <input type="button" value="Hide Movies" ng-click="movieCtrl.hideMovies()"/>-->
+
+<button ng-click="movieCtrl.showMovies()" >Show Movies</button>
+<button ng-click="movieCtrl.hideMovies()" >Hide Movies</button>
+</div>
+
+<movie-element
+movies = "movieCtrl.movies"
+show-movies-flag="movieCtrl.showMoviesFlag"></movie-element>
+<!--
+show-movies-flag is in dash case and not camel case
+if we use showCamelCase - it will not work
+-->
+
+<button ng-click="movieCtrl.addMovie()" >Add Movie</button>
+
+<div ng-if="movieCtrl.showAddMovieForm">
+  <div>
+    <label>Movie Name:</label>
+    <input ng-model="movieCtrl.movieToBeAdded.name"/>
+    {{movieCtrl.movieToBeAdded.name}}
+  </div>
+  <div>
+    <label>
+      Running Time:
+    </label>
+    <input ng-model="movieCtrl.movieToBeAdded.runningTime"/>
+    {{movieCtrl.movieToBeAdded.runningTime}}
+  </div>
+  <div>
+    <!-- <input type="button" value="Submit" ng-click="movieCtrl.submitAddMovieForm()"/>-->
+     <button ng-click="movieCtrl.submitAddMovieForm()" >Submit</button>
+  </div>
+</div>
+

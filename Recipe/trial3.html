@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script data-require="angular.js@*" data-semver="1.3.0" src="//code.angularjs.org/1.3.0/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+<body>
+<div ng-app="addApp">
+  <div class="wraper" ng-controller="modifyCtrl">
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name of Movie</th>
+        <th>Country</th>
+        <th>Type of Movie</th>
+        <th>Genre of Movie</th>
+        <th>Year of Release</th>
+        <th>Running Time</th>
+        <th>IMDB Rating</th>
+        <th>IMDB Vote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="tableData in tabelsData">
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.name | uppercase}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.name" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.country}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.country" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.type}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.type" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.genre}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.genre" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.year}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.year" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.runningTime}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.runningTime" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.IMDBrating}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.IMDBrating" /></div>
+        </td>
+        <td>
+          <div ng-hide="editingData[tableData.id]">{{tableData.IMDBvote}}</div>
+          <div ng-show="editingData[tableData.id]"><input type="text" ng-model="tableData.IMDBvote" /></div>
+        </td>
+        <td>
+          <button ng-hide="editingData[tableData.id]" ng-click="modify(tableData)">Modify</button>
+          <button ng-show="editingData[tableData.id]" ng-click="update(tableData)">Update</button>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+</body>
+</html>
